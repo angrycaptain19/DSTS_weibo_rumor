@@ -37,7 +37,7 @@ if __name__ == '__main__':
     with open("../rumor/4473713031.json", 'r', encoding='UTF-8')as f:
         weibo_centent = f.read()
         weibo_dict = json.loads(weibo_centent)  # 将 JSON 对象转换为 Python 字典
-        for i in range(0, len(weibo_dict)):
+        for i in range(len(weibo_dict)):
             item = weibo_dict[i]
             text1 = item['text']  # 逐条提取微博正文
             LDA_topic(text1)
