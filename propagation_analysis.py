@@ -12,7 +12,7 @@ def propagation_analysis(filename):
         interval = ((ternimal_time - start_time) / N)
         x = []  # 记录中间变量
         feature_vector = []
-        for i in range(0, len(weibo_dict)):
+        for i in range(len(weibo_dict)):
             vector = []
             item = weibo_dict[i]
             time = item['t']  # 转发时间
@@ -40,7 +40,7 @@ def propagation_analysis(filename):
                 feature_vector.append(temp[1:])
 
                 if weibo[0] != (flag + 1):  # 时间戳不连续，需要补0向量
-                    for a in range(weibo[0] - flag - 1):
+                    for _ in range(weibo[0] - flag - 1):
                         temp = [flag + 1] + [0] * 3  # 时间戳 和 3个0
                         flag += 1
                         if flag == (N-1):  # 如果(N-1)也需要补0向量，那么这一条不执行添加，因为最后必定会有一条不是0

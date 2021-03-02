@@ -77,9 +77,9 @@ for i in range(5):
     recall += sklearn.metrics.recall_score(y_test, result, average='weighted')
     print('完成', (i+1)*20, '%')
 
-accuracy = accuracy / 5
-precision = precision / 5
-recall = recall / 5
+accuracy /= 5
+precision /= 5
+recall /= 5
 print('accuracy:', accuracy)  # 准确率是分类正确的样本占总样本个数的比例
 print('precision:', precision)  # 精确率指模型预测为正的样本中实际也为正的样本占被预测为正的样本的比例
 print('recall:', recall)  # 召回率指实际为正的样本中被预测为正的样本所占实际为正的样本的比例

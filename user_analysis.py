@@ -13,7 +13,7 @@ def user_analysis(filename):
         interval = ((ternimal_time-start_time)/N)
         feature_vector = []
         x = []
-        for a in range(0, len(weibo_dict)):
+        for a in range(len(weibo_dict)):
             vector = []
             item = weibo_dict[a]
             time = item['t']  # 转发时间
@@ -105,39 +105,6 @@ def user_analysis(filename):
                 temp[0] = flag
                 temp[1] += weibo[1]  # 提供个人介绍
                 temp[2] += weibo[2]  # 认证
-                if weibo[3] == -1:  # 普通用户
-                    temp[3] += 1
-                elif weibo[3] == 0:  # 名人
-                    temp[4] += 1
-                elif weibo[3] == 1:  # 政府
-                    temp[5] += 1
-                elif weibo[3] == 2:  # 企业
-                    temp[6] += 1
-                elif weibo[3] == 3:  # 媒体
-                    temp[7] += 1
-                elif weibo[3] == 4:  # 校园
-                    temp[8] += 1
-                elif weibo[3] == 5:  # 网站
-                    temp[9] += 1
-                elif weibo[3] == 6:  # 应用
-                    temp[10] += 1
-                elif weibo[3] == 7:  # 团体（机构）
-                    temp[11] += 1
-                elif weibo[3] == 8:  # 待审企业
-                    temp[12] += 1
-                elif weibo[3] == 200:  # 初级达人
-                    temp[13] += 1
-                elif weibo[3] == 220:  # 中高级达人
-                    temp[14] += 1
-                elif weibo[3] == 400:  # 已故V用户
-                    temp[15] += 1
-                temp[16] += weibo[4]  # 性别 m:1 f:0 n:-1
-                temp[17] += weibo[5]  # 是否是大城市
-                temp[18] += weibo[6]  # 关注
-                temp[19] += weibo[7]  # 粉丝
-                temp[20] += weibo[8]  # 微博数
-                temp[21] += weibo[9]  # 建号时间
-                temp[22] += weibo[10]  # 影响因子
                 count += 1
             else:  # 时间戳改变
                 for a in range(1,23):
@@ -202,41 +169,41 @@ def user_analysis(filename):
                 temp[0] = flag
                 temp[1] = weibo[1]
                 temp[2] = weibo[2]
-                if weibo[3] == -1:  # 普通用户
-                    temp[3] += 1
-                elif weibo[3] == 0:  # 名人
-                    temp[4] += 1
-                elif weibo[3] == 1:  # 政府
-                    temp[5] += 1
-                elif weibo[3] == 2:  # 企业
-                    temp[6] += 1
-                elif weibo[3] == 3:  # 媒体
-                    temp[7] += 1
-                elif weibo[3] == 4:  # 校园
-                    temp[8] += 1
-                elif weibo[3] == 5:  # 网站
-                    temp[9] += 1
-                elif weibo[3] == 6:  # 应用
-                    temp[10] += 1
-                elif weibo[3] == 7:  # 团体（机构）
-                    temp[11] += 1
-                elif weibo[3] == 8:  # 待审企业
-                    temp[12] += 1
-                elif weibo[3] == 200:  # 初级达人
-                    temp[13] += 1
-                elif weibo[3] == 220:  # 中高级达人
-                    temp[14] += 1
-                elif weibo[3] == 400:  # 已故V用户
-                    temp[15] += 1
-                temp[16] += weibo[4]  # 性别 m:1 f:0 n:-1
-                temp[17] += weibo[5]  # 是否是大城市
-                temp[18] += weibo[6]  # 关注
-                temp[19] += weibo[7]  # 粉丝
-                temp[20] += weibo[8]  # 微博数
-                temp[21] += weibo[9]  # 建号时间
-                temp[22] += weibo[10]  # 影响因子
                 count = 1
 
+            if weibo[3] == -1:  # 普通用户
+                temp[3] += 1
+            elif weibo[3] == 0:  # 名人
+                temp[4] += 1
+            elif weibo[3] == 1:  # 政府
+                temp[5] += 1
+            elif weibo[3] == 2:  # 企业
+                temp[6] += 1
+            elif weibo[3] == 3:  # 媒体
+                temp[7] += 1
+            elif weibo[3] == 4:  # 校园
+                temp[8] += 1
+            elif weibo[3] == 5:  # 网站
+                temp[9] += 1
+            elif weibo[3] == 6:  # 应用
+                temp[10] += 1
+            elif weibo[3] == 7:  # 团体（机构）
+                temp[11] += 1
+            elif weibo[3] == 8:  # 待审企业
+                temp[12] += 1
+            elif weibo[3] == 200:  # 初级达人
+                temp[13] += 1
+            elif weibo[3] == 220:  # 中高级达人
+                temp[14] += 1
+            elif weibo[3] == 400:  # 已故V用户
+                temp[15] += 1
+            temp[16] += weibo[4]  # 性别 m:1 f:0 n:-1
+            temp[17] += weibo[5]  # 是否是大城市
+            temp[18] += weibo[6]  # 关注
+            temp[19] += weibo[7]  # 粉丝
+            temp[20] += weibo[8]  # 微博数
+            temp[21] += weibo[9]  # 建号时间
+            temp[22] += weibo[10]  # 影响因子
         for a in range(1, 23):  # 添加进这个事件的最后一条微博
             temp[a] = temp[a] / count
         feature_vector.append(temp[1:])
